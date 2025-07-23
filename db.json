@@ -2,21 +2,21 @@
   "notes": [
     {
       "id": "1",
-      "name": "HTML is easy",
-      "price": "100 000",
+      "name": "Apple MacBook Air 13",
+      "price": "110 000",
       "imgProduct": "/img/products/macbook.jpg"
     },
     {
       "id": "2",
-      "name": "Browser can execute only JavaScript",
-      "price":  "200 000",
-      "imgProduct": "/img/products/macbook.jpg"
+      "name": "Apple watch",
+      "price":  "29 000",
+      "imgProduct": "/img/products/apple-watch.jpg"
     },
     {
       "id": "3",
-      "name": "GET and POST are the most important methods of HTTP protocol",
-      "price":  "300 000",
-      "imgProduct": "/img/products/macbook.jpg"
+      "name": "Mac Pro",
+      "price":  "190 000",
+      "imgProduct": "/img/products/mac-pro.jpg"
     }
   ]
 }
