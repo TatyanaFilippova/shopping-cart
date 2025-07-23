@@ -1,0 +1,43 @@
+.count {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.count__box {
+  width: 40px;
+  height: 30px;
+  background: #eaeff2;
+  border-radius: 3px;
+}
+
+.count__controls {
+  display: flex;
+  flex-direction: column;
+  row-gap: 9px;
+}
+
+.count__controls img {
+  display: block;
+}
+
+.count__down {
+}
+
+.count__up {
+}
+
+.count__input {
+  padding-top: 4px;
+  max-width: 100%;
+  background-color: transparent;
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.count__input::-webkit-inner-spin-button,
+.count__input::-webkit-outer-spin-button {
+  appearance: none;
+}
