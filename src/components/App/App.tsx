@@ -4,8 +4,11 @@ import "./_base.scss";
 import "./_section-cart.scss";
 import Title from "../Title/Title.tsx";
 import Cart from "../Cart";
+import {getProduct} from "../../api/api.ts";
+import {Suspense} from "react";
 
 function App() {
+    const product = getProduct();
   return (
     <section className="section-cart">
       <header className="section-cart__header">
@@ -15,7 +18,9 @@ function App() {
       </header>
       <div className="section-cart__body">
         <div className="container">
-          <Cart />
+            <Suspense fallback={null}>
+                <Cart product={product}/>
+            </Suspense>
         </div>
       </div>
     </section>
