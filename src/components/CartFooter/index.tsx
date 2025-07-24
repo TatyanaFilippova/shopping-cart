@@ -1,11 +1,40 @@
 import "./style.scss";
+import { postProduct } from "../../api/api.ts";
+import { startTransition, useMemo } from "react";
+import type { ProductProps } from "../Product";
 
-const CartFooter = () => {
+interface FooterProps {
+  refetchProduct: () => void;
+  content: ProductProps[];
+}
+
+const CartFooter = ({ refetchProduct, content }: FooterProps) => {
+  async function handleReset() {
+    startTransition(async () => {
+      await postProduct();
+      startTransition(async () => {
+        await refetchProduct();
+      });
+    });
+  }
+
+  const result = useMemo(() => {
+    let i = 0;
+    content.forEach((content) => {
+      i += content.price;
+    });
+    return i;
+  }, [content]);
+
   return (
     <footer className="cart-footer">
-      <button className="button">Сбросить</button>
+      {content.length === 0 && (
+        <button className="button" onClick={handleReset}>
+          Сбросить
+        </button>
+      )}
       <div className="cart-footer__count">3 единицы</div>
-      <div className="cart-footer__price">329 000 руб.</div>
+      <div className="cart-footer__price">{result} руб.</div>
     </footer>
   );
 };

@@ -5,7 +5,8 @@ import "./_section-cart.scss";
 import Title from "../Title/Title.tsx";
 import Cart from "../Cart";
 import { getProduct } from "../../api/api.ts";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
+import CartHeader from "../CartHeader";
 
 function App() {
   const [productPromise, setProductPromise] = useState(getProduct());
@@ -13,10 +14,6 @@ function App() {
   function refetchProduct(): void {
     setProductPromise(getProduct());
   }
-
-  useEffect(() => {
-    console.log("sgv");
-  }, []);
 
   return (
     <section className="section-cart">
@@ -27,6 +24,7 @@ function App() {
       </header>
       <div className="section-cart__body">
         <div className="container">
+          <CartHeader />
           <Suspense fallback={<div>Loading...</div>}>
             <Cart product={productPromise} refetchProduct={refetchProduct} />
           </Suspense>

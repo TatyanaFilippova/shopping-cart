@@ -3,19 +3,19 @@
     {
       "id": "1",
       "name": "Apple MacBook Air 13",
-      "price": "110 000",
+      "price": 110000,
       "imgProduct": "/img/products/macbook.jpg"
     },
     {
       "id": "2",
       "name": "Apple watch",
-      "price":  "29 000",
+      "price": 29000,
       "imgProduct": "/img/products/apple-watch.jpg"
     },
     {
       "id": "3",
       "name": "Mac Pro",
-      "price":  "190 000",
+      "price": 190000,
       "imgProduct": "/img/products/mac-pro.jpg"
     }
   ]

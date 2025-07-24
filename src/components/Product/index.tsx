@@ -6,7 +6,7 @@ import { deleteProduct } from "../../api/api.ts";
 
 export interface ProductProps {
   name: string;
-  price: string;
+  price: number;
   imgProduct: string;
   id: string;
   refetchProduct: () => void;

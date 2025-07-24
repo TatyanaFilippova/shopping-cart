@@ -1,4 +1,3 @@
-import CartHeader from "../CartHeader";
 import Product, { type ProductProps } from "../Product";
 import CartFooter from "../CartFooter";
 import { use } from "react";
@@ -13,7 +12,6 @@ const Cart = ({ product, refetchProduct }: PProps) => {
 
   return (
     <section className="cart">
-      <CartHeader />
       {content.map((item: ProductProps) => (
         <Product
           key={item.id}
@@ -25,7 +23,7 @@ const Cart = ({ product, refetchProduct }: PProps) => {
         />
       ))}
 
-      <CartFooter />
+      <CartFooter refetchProduct={refetchProduct} content={content} />
     </section>
   );
 };
