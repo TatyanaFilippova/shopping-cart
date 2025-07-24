@@ -20,6 +20,7 @@ const Cart = ({ product, refetchProduct }: PProps) => {
           name={item.name}
           id={item.id}
           refetchProduct={refetchProduct}
+          count={item.count}
         />
       ))}
 

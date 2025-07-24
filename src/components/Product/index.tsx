@@ -2,13 +2,17 @@ import "./style.scss";
 import Count from "../Count";
 import ButtonDelete from "../ButtonDelete";
 import { useTransition } from "react";
-import { deleteProduct } from "../../api/api.ts";
+import { deleteProduct, putProduct } from "../../api/api.ts";
 
-export interface ProductProps {
+export interface ProductElement {
   name: string;
   price: number;
   imgProduct: string;
   id: string;
+  count: number;
+}
+
+export interface ProductProps extends ProductElement {
   refetchProduct: () => void;
 }
 
@@ -17,9 +21,10 @@ const Product = ({
   price,
   imgProduct,
   id,
+  count,
   refetchProduct,
 }: ProductProps) => {
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   async function handleDelete() {
     startTransition(async () => {
@@ -35,6 +40,36 @@ const Product = ({
     currency: "RUB",
   }).format(price);
 
+  async function handlePutUp() {
+    startTransition(async () => {
+      await putProduct(id, {
+        name,
+        price,
+        imgProduct,
+        count: count + 1,
+        id,
+      });
+      startTransition(async () => {
+        await refetchProduct();
+      });
+    });
+  }
+
+  async function handlePutDown() {
+    startTransition(async () => {
+      await putProduct(id, {
+        name,
+        price,
+        imgProduct,
+        count: count > 0 ? count - 1 : 0,
+        id,
+      });
+      startTransition(async () => {
+        await refetchProduct();
+      });
+    });
+  }
+
   return (
     <section className="product">
       <div className="product__img">
@@ -42,7 +77,7 @@ const Product = ({
       </div>
       <div className="product__title">{name}</div>
       <div className="product__count">
-        <Count />
+        <Count count={count} upCount={handlePutUp} downCount={handlePutDown} />
       </div>
       <div className="product__price">{ru}</div>
       <div className="product__controls">

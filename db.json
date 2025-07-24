@@ -1,22 +1,25 @@
 {
   "notes": [
     {
-      "id": "1",
       "name": "Apple MacBook Air 13",
       "price": 110000,
-      "imgProduct": "/img/products/macbook.jpg"
+      "imgProduct": "/img/products/macbook.jpg",
+      "count": 10,
+      "id": "1"
     },
     {
       "id": "2",
       "name": "Apple watch",
       "price": 29000,
-      "imgProduct": "/img/products/apple-watch.jpg"
+      "imgProduct": "/img/products/apple-watch.jpg",
+      "count": 1
     },
     {
       "id": "3",
       "name": "Mac Pro",
       "price": 190000,
-      "imgProduct": "/img/products/mac-pro.jpg"
+      "imgProduct": "/img/products/mac-pro.jpg",
+      "count": 1
     }
   ]
 }
