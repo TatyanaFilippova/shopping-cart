@@ -29,6 +29,12 @@ const Product = ({
       });
     });
   }
+
+  const ru = new Intl.NumberFormat("ru", {
+    style: "currency",
+    currency: "RUB",
+  }).format(price);
+
   return (
     <section className="product">
       <div className="product__img">
@@ -38,7 +44,7 @@ const Product = ({
       <div className="product__count">
         <Count />
       </div>
-      <div className="product__price">{price} руб.</div>
+      <div className="product__price">{ru}</div>
       <div className="product__controls">
         <ButtonDelete handleDelete={handleDelete} />
       </div>

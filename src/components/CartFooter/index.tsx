@@ -26,6 +26,11 @@ const CartFooter = ({ refetchProduct, content }: FooterProps) => {
     return i;
   }, [content]);
 
+  const ru = new Intl.NumberFormat("ru", {
+    style: "currency",
+    currency: "RUB",
+  }).format(result);
+
   return (
     <footer className="cart-footer">
       {content.length === 0 && (
@@ -34,7 +39,7 @@ const CartFooter = ({ refetchProduct, content }: FooterProps) => {
         </button>
       )}
       <div className="cart-footer__count">3 единицы</div>
-      <div className="cart-footer__price">{result} руб.</div>
+      <div className="cart-footer__price">{ru}</div>
     </footer>
   );
 };
