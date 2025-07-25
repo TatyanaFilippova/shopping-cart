@@ -21,7 +21,7 @@ const CartFooter = ({ refetchProduct, content }: FooterProps) => {
   const result = useMemo(() => {
     let i = 0;
     content.forEach((content) => {
-      i += content.price;
+      i += content.price * content.count;
     });
     return i;
   }, [content]);
@@ -31,6 +31,14 @@ const CartFooter = ({ refetchProduct, content }: FooterProps) => {
     currency: "RUB",
   }).format(result);
 
+  const sumCountProduct = useMemo(() => {
+    let sum = 0;
+    content.forEach((content) => {
+      sum += content.count;
+    });
+    return sum;
+  }, [content]);
+
   return (
     <footer className="cart-footer">
       {content.length === 0 && (
@@ -38,7 +46,7 @@ const CartFooter = ({ refetchProduct, content }: FooterProps) => {
           Сбросить
         </button>
       )}
-      <div className="cart-footer__count">3 единицы</div>
+      <div className="cart-footer__count">Всего: {sumCountProduct}</div>
       <div className="cart-footer__price">{ru}</div>
     </footer>
   );

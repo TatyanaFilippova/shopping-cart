@@ -16,7 +16,7 @@ export interface ProductProps extends ProductElement {
   refetchProduct: () => void;
 }
 
-const Product = ({
+export const Product = ({
   name,
   price,
   imgProduct,
@@ -38,7 +38,7 @@ const Product = ({
   const ru = new Intl.NumberFormat("ru", {
     style: "currency",
     currency: "RUB",
-  }).format(price);
+  }).format(price * count);
 
   async function handlePutUp() {
     startTransition(async () => {

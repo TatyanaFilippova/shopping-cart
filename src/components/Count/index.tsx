@@ -1,12 +1,13 @@
 import "./style.scss";
+import type { ProductElement } from "../Product";
 
 interface CountProps {
-  count: number;
   upCount: () => void;
   downCount: () => void;
+  count: ProductElement["count"];
 }
 
-const Count = ({ count, upCount, downCount }: CountProps) => {
+const Count = ({ upCount, downCount, count }: CountProps) => {
   return (
     <div className="count">
       <div className="count__box">
