@@ -2,6 +2,7 @@ import "./style.scss";
 import { postProduct } from "../../api/api.ts";
 import { startTransition, useMemo } from "react";
 import type { ProductProps } from "../Product";
+import pluralize from "pluralize-ru";
 
 interface FooterProps {
   refetchProduct: () => void;
@@ -46,7 +47,15 @@ const CartFooter = ({ refetchProduct, content }: FooterProps) => {
           Сбросить
         </button>
       )}
-      <div className="cart-footer__count">Всего: {sumCountProduct}</div>
+      <div className="cart-footer__count">
+        {pluralize(
+          sumCountProduct,
+          "нет товаров",
+          "%d товар",
+          "%d товара",
+          "%d товаров",
+        )}
+      </div>
       <div className="cart-footer__price">{ru}</div>
     </footer>
   );
